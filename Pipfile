@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+python-dotenv = "==0.19.1"
+flask = "==2.0.2"
+flask-sqlalchemy = "==2.5.1"
+flask-wtf = "==0.15.1"
+wtforms = {extras = ["email"], version = "*"}
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}Salão de Beleza Dora Áurea</title>
+</head>
+<body>
+    <nav>
+        <h1>
+            <a href="/">Salão de Beleza Dora Áurea</a>
+        </h1>
+        <ul>
+            <li><a href="{{ url_for('clientes') }}">Clientes</a></li>
+            <li><a href="{{ url_for('funcionarios') }}">Funcionários</a></li>
+            <li><a href="{{ url_for('servicos') }}">Serviços</a></li>
+            <li><a href="{{ url_for('agenda') }}">Agenda de Serviços</a></li>
+        </ul>
+    </nav>
+    <section class="content">
+        <header>
+        {% block header %}Salão de Beleza com trabalho conceituado e o melhor atendimento da região{% endblock %}
+        </header>
+        {% for message in get_flashed_messages() %}
+            <div class="flash">{{ message }}</div>
+        {% endfor %}
+        {% block content %}
+        <h2>Agende seu serviço de Beleza</h2>
+        <p>Não precisa vim até o nosso estabecimento, agende e vamos até você.</p>
+        <p>Poupe tempo e ganhe qualidade</p>
+        <h3>Meios de Pagamentos</h3>
+        <ul>
+            <li>PIX - 10% de Desconto</li>
+            <li>Débito - 8% de Desconto</li>
+            <li>Crédito em até 3 vezes</li>
+            <li>Assinatura Mensal - Procure nossos credenciados e compre uma assinatura mensal para economizar</li>
+        </ul>
+        {% endblock %}
+    </section>
+
+    <div id="footer">
+        {% block footer %}
+        <hr>
+        &copy; Copylight 2021 by <a href="http://rafabr.top/">Rafa Bruno</a>.
+        {% endblock %}
+     </div>
+</body>
+</html>

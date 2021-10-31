@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Serviços{% endblock title%}
+
+{% block content %}
+<h1>Serviços Cadastrados</h1>
+<ul>
+    {% if servicos_lista %}
+        {% for servico in servicos_lista %}
+            <li>{{ servico.servico }}</li>
+        {% endfor %}
+    {% else %}
+    <li>Nenhum Serviço Cadastrado</li>
+    {% endif %}
+</ul>
+<h2>Novo servico</h2>
+<form action="{{ url_for('servicos') }}" method="post">
+    {{ form.csrf_token }}
+    {{ form.servico.label }}
+    {{ form.servico }}
+    {{ form.submit }}
+</form>
+{% endblock content %}

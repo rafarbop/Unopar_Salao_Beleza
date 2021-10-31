@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Agenda de Serviços{% endblock title%}
+
+{% block content %}
+<h1>Agenda de Serviços Cadastrados</h1>
+<ul>
+    {% if servicos_lista %}
+        {% for servico in servicos_lista %}
+            <li>{{ servico.servico }}</li>
+        {% endfor %}
+    {% else %}
+    <li>Nenhum Agendamento Cadastrado</li>
+    {% endif %}
+</ul>
+<h2>Novo Agendamento</h2>
+<form action="{{ url_for('servicos') }}" method="post">
+    {% if form %}
+    {{ form.csrf_token }}
+    {{ form.data.label }}
+    {{ form.data }}
+    {{ form.submit }}
+    {% else %}
+    <p>Em desenvolvimento!</p>
+    {% endif %}
+</form>
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Funcionário{% endblock title%}
+
+{% block content %}
+<h1>Funcionário Cadastrados</h1>
+<ul>
+    {% if funcionarios_lista %}
+        {% for funcionario in funcionarios_lista %}
+            <li>{{ funcionario.name }} - {{ funcionario.cpf }}</li>
+        {% endfor %}
+    {% else %}
+    <li>Nenhum Funcionario Cadastrado</li>
+    {% endif %}
+</ul>
+<h2>Novo funcionario</h2>
+<form action="{{ url_for('funcionarios') }}" method="post">
+    {{ form.csrf_token }}
+    {{ form.name.label }}
+    {{ form.name }}
+    {{ form.cpf.label }}
+    {{ form.cpf(size=11) }}
+    {{ form.submit }}
+</form>
+{% endblock content %}

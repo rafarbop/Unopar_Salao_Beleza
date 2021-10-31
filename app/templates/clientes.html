@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Clientes{% endblock title%}
+
+{% block content %}
+<h1>Clientes Cadastrados</h1>
+<ul>
+    {% if clientes_lista %}
+        {% for cliente in clientes_lista %}
+            <li>{{ cliente.name }}</li>
+        {% endfor %}
+    {% else %}
+    <li>Nenhum Cliente Cadastrado</li>
+    {% endif %}
+</ul>
+<h2>Novo Cliente</h2>
+<form action="{{ url_for('clientes') }}" method="post">
+    {{ form.csrf_token }}
+    {{ form.name.label }}
+    {{ form.name }}
+    {{ form.email.label }}
+    {{ form.email }}
+    {{ form.submit }}
+</form>
+{% endblock content %}
